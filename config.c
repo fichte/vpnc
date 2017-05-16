@@ -363,7 +363,7 @@ static const char *config_def_app_version(void)
 
 static const char *config_def_script(void)
 {
-	return "/etc/vpnc/vpnc-script";
+	return "/usr/local/opt/vpnc/etc/vpnc/vpnc-script";
 }
 
 static const char *config_def_pid_file(void)
@@ -671,7 +671,7 @@ static char *get_config_filename(const char *name, int add_dot_conf)
 {
 	char *realname;
 
-	asprintf(&realname, "%s%s%s", index(name, '/') ? "" : "/etc/vpnc/", name, add_dot_conf ? ".conf" : "");
+	asprintf(&realname, "%s%s%s", index(name, '/') ? "" : "/usr/local/opt/vpnc/etc/vpnc/", name, add_dot_conf ? ".conf" : "");
 	return realname;
 }
 
@@ -907,8 +907,8 @@ void do_config(int argc, char **argv)
 	}
 
 	if (!got_conffile) {
-		read_config_file("/etc/vpnc/default.conf", config, 1);
-		read_config_file("/etc/vpnc.conf", config, 1);
+		read_config_file("/usr/local/opt/vpnc/etc/vpnc/default.conf", config, 1);
+		read_config_file("/usr/local/opt/vpnc/etc/vpnc.conf", config, 1);
 	}
 
 	if (!print_config) {
